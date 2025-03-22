@@ -1,0 +1,80 @@
+<div class="modal fade" id="modal-lg">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Shopping Cart</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="productInCart.length <= 0" class="text-center">
+          <p>You have not yet added a product in your cart. Select the product you want to buy and click 'Add to Cart' button</p>
+        </div>
+        <div *ngIf="productInCart.length > 0">
+          <div class="row m-2">
+            <div class="col-12 d-flex justify-content-between">
+              <h4>
+                <span class="text-bold">Total Cost: </span>
+                <span class="text-success">${{totalCost}}</span>
+              </h4>
+              <h4>
+                <span class="text-bold">Total Items: </span>
+                <span class="text-dark">{{totalProductsInCart}}</span>
+              </h4>
+            </div>
+          </div>
+          <div class="callout" *ngFor="let product of productInCart">
+            <div class="row">
+              <div class="col-sm-3 mb-2">
+                <img src="{{product.images[0]}}" alt="" class="img img-fluid img-bordered mb-4">
+                <div class="input-group px-3" *ngIf="product.quantity > 0">
+                  <span class="input-group-prepend">
+                    <button type="button" class="btn btn-outline-dark btn-sm" (click)="updateQuantity(product.id, false)">
+                      <i class="fas fa-minus text-sm"></i>
+                    </button>
+                  </span>
+                  <input type="text" class="form-control rounded-0 text-center form-control-sm" value="{{product.quantity}}" disabled>
+                  <span class="input-group-append">
+                    <button type="button" class="btn btn-outline-dark btn-sm" (click)="updateQuantity(product.id, true)">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </span>
+                </div>
+                <div class="px-3 text-center">
+                  <button class="btn btn-outline-danger rounded-pill btn-sm my-3" (click)="removeFromCart(product.id)">
+                    <i class="fas fa-trash"></i>
+                    <span> Remove</span>
+                  </button>
+                </div>
+              </div>
+              <div class="col-sm-9">
+                <dl>
+                  <dt>Name:</dt>
+                  <dd>{{product.title}}</dd>
+                  <dt>Description:</dt>
+                  <dd>{{product.description}}</dd>
+                  <dt>Price of Item:</dt>
+                  <dd>${{product.price}}</dd>
+                  <dt>Total Price:</dt>
+                  <dd>
+                    <h5 class="text-gray-dark">${{product.price * product.quantity}}</h5>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn bg-gradient-gray-dark" [ngClass]="{'disabled': totalProductsInCart <= 0}" (click)="doCheckout()">
+          <i class="fas fa-shopping-cart"></i>
+          <span> Checkout</span>
+        </button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

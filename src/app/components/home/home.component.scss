@@ -1,0 +1,19 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps the background fixed on scroll */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  //padding: 20px;
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for content */
+  border-radius: 10px;
+}

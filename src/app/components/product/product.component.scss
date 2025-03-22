@@ -1,0 +1,9 @@
+/* Hover shadow effect */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for both properties */
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Larger shadow */
+  transform: translateY(-5px); /* Lift effect */
+}
