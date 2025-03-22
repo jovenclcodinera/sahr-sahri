@@ -1,6 +1,9 @@
 # Step 1: Use an Nginx image to serve the Angular app
 FROM nginx:alpine
 
+# Copy the custom nginx.conf file
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Copy the build output from the local machine into the Nginx container
 COPY ./dist/sahri-sahri-store /usr/share/nginx/html
 
