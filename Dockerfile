@@ -15,7 +15,7 @@ RUN npm run build --prod
 FROM nginx:alpine
 
 # Copy the build output from the previous step to the Nginx server
-COPY --from=build /app/dist/<your-app-name> /usr/share/nginx/html
+COPY --from=build /app/dist/sahri-sahri-store /usr/share/nginx/html
 
 # Expose port 80 for the app
 EXPOSE 80
